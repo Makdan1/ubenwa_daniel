@@ -12,7 +12,7 @@ import 'package:ubenwa_daniel/utils/router/navigation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ubenwa_daniel/utils/router/route_names.dart';
 
-class Authentication {
+class Activities {
   final NavigationService _navigationService = locator<NavigationService>();
 
   late SignInResponse _currentUser;

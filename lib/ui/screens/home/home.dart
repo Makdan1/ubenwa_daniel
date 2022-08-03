@@ -7,7 +7,7 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 import 'package:ubenwa_daniel/core/model/NewBornList.dart';
-import 'package:ubenwa_daniel/core/services/auth_service.dart';
+import 'package:ubenwa_daniel/core/services/activities_service.dart';
 import 'package:ubenwa_daniel/ui/screens/home/home_view_model.dart';
 import 'package:ubenwa_daniel/ui/widget/born_widget.dart';
 import 'package:ubenwa_daniel/utils/colors.dart';
@@ -26,7 +26,7 @@ class Home extends StatefulWidget {
 }
 
 class LoginState extends State<Home> with TickerProviderStateMixin {
-  final Authentication _authentication = locator<Authentication>();
+  final Activities _authentication = locator<Activities>();
   late bool active = false;
   AnimationController? _navController;
   Animation<Offset>? _navAnimation;

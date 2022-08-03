@@ -4,7 +4,7 @@
 // import 'package:ubenwa_daniel/core/model/error_model.dart';
 // import 'package:ubenwa_daniel/core/model/success_model.dart';
 // import 'package:ubenwa_daniel/core/model/wallet_history_model.dart';
-// import 'package:ubenwa_daniel/core/services/auth_service.dart';
+// import 'package:ubenwa_daniel/core/services/activities_service.dart';
 // import 'package:ubenwa_daniel/core/services/index.dart';
 // import 'package:ubenwa_daniel/utils/http/paths.dart';
 // import 'package:ubenwa_daniel/utils/locator.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ubenwa_daniel/core/services/auth_service.dart';
+import 'package:ubenwa_daniel/core/services/activities_service.dart';
 import 'package:ubenwa_daniel/utils/locator.dart';
 import 'package:ubenwa_daniel/utils/router/navigation_service.dart';
 import 'package:ubenwa_daniel/utils/router/route_names.dart';
@@ -20,7 +20,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
   final NavigationService _navigationService = locator<NavigationService>();
   late AnimationController animationController;
   late Animation<double> animation;
-  final Authentication _authentication = locator<Authentication>();
+  final Activities _authentication = locator<Activities>();
   startTime() async {
     var _duration = const Duration(milliseconds: 2500);
     return Timer(_duration, navigationPage);
