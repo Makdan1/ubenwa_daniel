@@ -69,18 +69,29 @@ class _MyAppState extends State<MyApp> {
       // <-- Event handler
       // This is the fetch-event callback.
       print("[BackgroundFetch] Event received $taskId");
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
-      model.createNewBorn(CreateNewBornModel(
-          data: Data(
-              type: "newborns",
-              attributes: Attributes(
-                name: "John",
-                gestation: DateTime.now().toString(),
-                gender: "male",
-              ))));
-
-        _events.insert(0, new DateTime.now());
+        var id =   prefs.getString('background');
+        if (id != null) {
+          _enabled = true;
+        } else {
+          _enabled = false;
+        }
       });
+      if (_enabled) {
+        setState(() {
+          model.createNewBorn(CreateNewBornModel(
+              data: Data(
+                  type: "newborns",
+                  attributes: Attributes(
+                    name: "John",
+                    gestation: DateTime.now().toString(),
+                    gender: "male",
+                  ))));
+
+          _events.insert(0, new DateTime.now());
+        });
+      }
       // IMPORTANT:  You must signal completion of your task or the OS can punish your app
       // for taking too long in the background.
       BackgroundFetch.finish(taskId);
@@ -102,26 +113,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _onStart() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      var id = prefs.getString('background');
-      if (id != null) {
-        _enabled = true;
-      } else {
-        _enabled = false;
-      }
-    });
-    if (_enabled) {
+
       BackgroundFetch.start().then((int status) {
         print('[BackgroundFetch] start success: $status');
       }).catchError((e) {
         print('[BackgroundFetch] start FAILURE: $e');
       });
-    } else {
-      BackgroundFetch.stop().then((int status) {
-        print('[BackgroundFetch] stop success: $status');
-      });
-    }
+  //  } else {
+  //     BackgroundFetch.stop().then((int status) {
+  //       print('[BackgroundFetch] stop success: $status');
+  //     });
+  //   }
   }
 
   @override

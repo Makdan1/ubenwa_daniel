@@ -37,19 +37,19 @@ class LoginState extends State<Home> with TickerProviderStateMixin {
       setState(() {
         enableBackground = false;
       });
-      setState(() async {
-        SharedPreferences prefs;
-        prefs = await SharedPreferences.getInstance();
-        await prefs.remove('background');
+      SharedPreferences prefs;
+      prefs = await SharedPreferences.getInstance();
+      setState(()  {
+         prefs.remove('background');
       });
     } else {
+      SharedPreferences prefs;
+      prefs = await SharedPreferences.getInstance();
       setState(() {
         enableBackground = true;
       });
-      setState(() async {
-        SharedPreferences prefs;
-        prefs = await SharedPreferences.getInstance();
-        await prefs.setString('background', "yes");
+      setState(()  {
+         prefs.setString('background', "yes");
       });
     }
   }
@@ -335,7 +335,7 @@ class LoginState extends State<Home> with TickerProviderStateMixin {
                                                               .center,
                                                       children: [
                                                         Text(
-                                                          "Looks like you haven’t added any new born",
+                                                          "Looks like you haven’t added any new born, kindly toggle the background upload at the top to start, if that is done already kindly drag this page down to refresh page",
                                                           style: TextStyle(
                                                               fontSize: 15,
                                                               color: AppColors
